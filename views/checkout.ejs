@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="checkoutstyle.css">
+</head>
+<body>
+    
+<div class="container">
+    <div class="checkoutLayout">
+
+        
+        <div class="returnCart">
+            <a href="/afterlogin">keep shopping</a>
+            <h1>List Product in Cart</h1>
+            <div class="list">
+
+                <div class="item">
+                    <img src="burger.jpg">
+                    <div class="info">
+                        <div class="name">PRODUCT 1</div>
+                        <div class="price">$22</div>
+                    </div>
+                    <div class="quantity">5</div>
+                    <div class="returnPrice">$0</div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="right">
+
+
+           
+            <div class="return">
+                <div class="row">
+                    <div>Total Quantity</div>
+                    <div class="totalQuantity">0</div>
+                </div>
+                <div class="row">
+                    <div>Total Price</div>
+                    <div class="totalPrice">$0</div>
+                </div>
+
+            <form class="container" id="checkoutForm" method="post" action="/">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input class="form-control" type="text" name="name">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input class="form-control" type="number" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input class="form-control" type="text" name="address">
+                </div>
+                <div class="form-group">
+                    <label for="payment">Payment option:</label>
+                    <select id="payment" name="payment" required>
+                        <option value="cash">Cash</option>
+                        <option value="UPI">UPI</option>
+                    </select>
+                </div>
+                <button type="submit">Pay and Place Order</button>
+            </form>
+    </div>
+    <div>
+        <p>Check Profile=> <a href="/profile">Profile</a></p>
+    </div>
+</div>
+
+
+<script src="checkoutprod.js"></script>
+
+</body>
+</html>

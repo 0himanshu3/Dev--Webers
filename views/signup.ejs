@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login_page.css">
+    <title>FeedMeNow - Hogwarts Canteen</title>
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Sign up</h1>
+    </header>
+
+    <section>
+        <p>Discover the magical dining experience at Hogwarts Canteen with FeedMeNow app.</p>
+        
+    </section>
+    <div id="background_container">
+        <div class="container">
+            <div class="form-container">
+                <h2>Sign Up</h2>
+                        <form action="/signup" method="post">
+                            
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" placeholder="Enter username/email" required>
+                            
+                           
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" placeholder="Enter password" required>
+                           
+                            <label for="usertype">UserType:</label>
+                            <select id="usertype" name="usertype" required>
+                                <option value="student">Student</option>
+                                <option value="canteen">CanteenOwner</option>
+                            </select>
+            
+                            <button type="submit" >SignUp</button>
+                        </form>
+                        
+            </div>
+        </div>
+    </div>
+    
+    <!-- <footer>
+        <p> 2024 FeedMeNow - Hogwarts Canteen</p>
+    </footer> -->
+</body>
+
+</html>

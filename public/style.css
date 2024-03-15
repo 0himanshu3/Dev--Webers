@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #93278a;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+section {
+    margin: 20px;
+}
+
+footer {
+    background-color:#93278a ;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.container {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 25%;
+    margin:auto;
+    
+}
+.form-container {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin: 10px 0;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px 0;
+    box-sizing: border-box;
+}
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+h2 {
+    color: #333;
+}
+@media(max-width:850px){
+    .container{
+        width:65%;
+    }
+}
+/* @media(max-width:450px){
+    .container{
+        width:80%;
+    }
+} */
+#background_container{
+    width: 100%;
+    background-image: url(food3.webp);
+    background-size: cover;
+    opacity: 0.9;
+    
+}
+    
