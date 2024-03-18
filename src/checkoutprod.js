@@ -111,7 +111,7 @@ const generateCartItems = () => {
             <div class="title-price-x">
               <h4 class="title-price">
                 <p>${item.name}</p>
-                <p class="cart-item-price">$ ${item.price.toFixed(2)}</p>
+                <p class="cart-item-price">$${item.price.toFixed(2)}</p>
               </h4>
             </div>
           </div>
@@ -123,4 +123,3 @@ const generateCartItems = () => {
   })
   .join("");
 };
-

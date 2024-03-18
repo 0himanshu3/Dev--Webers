@@ -31,35 +31,31 @@ const bcrypt=require('bcrypt');
 //const collection=require("./config");
 const ejs=require('ejs');
 //const {connectToDatabase}=require('./db');////////
-const router = express.Router();
-const app=express();
-const path=require('path');
-//const tempPath=path.join(__dirname,'../views');////x//
-//connectToDatabase();//////////
+const { connectDB, getCollection, getOrderHistoriesCollection } = require('./db');
+
+
 const mongoose=require("mongoose");
 const bodyParser=require("body-parser");
 const session = require('express-session');
-// const { connectDB, getCollection } = require('./db');
+const router = express.Router();
+const app=express();
+const path=require('path');
 
-// // Connect to the database
-// connectDB().catch(error => console.error('Error connecting to the database:', error));
-// const collectionuser = getCollection();
-///////////////////////mongoose.connect()
-//const adminRoute=require('./admin-route');
+
 router.use(bodyParser.json());
 app.locals.products = JSON.stringify(products);
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use('/api/users',require('./users'));
-//app.use('/api/orderhistories',require('./orderhistories'));
+app.use('/api',router);
+app.use('/api',require('./users'));
+app.use('/api',require('./orderhistories'));
 app.set("view engine",'ejs');
-// app.use(session({
-//     secret: 'thisissecretcodeforwebers', // Change this to a long, randomly generated string
-//     resave: false,
-//     saveUninitialized: false
-// }));
-//app.set('views',path.join(__dirname,'..','views')); 
-//config//////////
+app.use(session({
+    secret: 'thisissecretcodeforwebers', // Change this to a long, randomly generated string
+    resave: false,
+    saveUninitialized: false
+}));
+app.set('views',path.join(__dirname,'..','views')); 
 const connect=mongoose.connect("mongodb://localhost:27017/weber");
 
 connect.then(()=>{
@@ -84,16 +80,46 @@ const LoginSchema = new mongoose.Schema({
         required: true
     }
 });
+const orderItemSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    product_id : {
+        type: String,
+        required: true
+    },
+    quantity : {
+        type: Number,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    image : {
+        type: String,
+        required: true
+    }
 
-const orderHistorySchema = new mongoose.Schema({
-    fullName: String,
-    phoneNumber: String,
-    cartDetails: Array
-},
-
+})
+const orderHistorySchema = new mongoose.Schema({ 
+    fullName:{
+        type: String,
+        required: true
+    },
+    phoneNumber:{
+        type: String,
+        required: true
+    },
+    cartDetails: [orderItemSchema]
+}
+// {
+//     timestamps: true
+// }
 );
 
-const OrderHistory = new mongoose.model("orderhistories", orderHistorySchema);
+const orderHistoriesCollection = new mongoose.model("orderhistories", orderHistorySchema);
 
 
 const collection=new mongoose.model("users",LoginSchema);
@@ -108,9 +134,7 @@ app.get("/",(req,res)=>{
 app.get('/main', (req, res) => {
     res.render("main");
   });
-app.get('/profile', (req, res) => {
-    res.render("profile");
-  });
+
 app.get('/afterlogin', (req, res) => {
     res.render("afterlogin");
   });
@@ -120,17 +144,12 @@ app.get('/checkout', (req, res) => {
 app.get("/signup",(req,res)=>{
     res.render("signup");
 })
-app.get('/afterlogin', (req, res) => {
-    res.render("afterlogin", { username: req.session.username, usertype: req.session.usertype });
-});
-app.get('/checkout', (req, res) => {
-    res.render("checkout", { username: req.session.username, usertype: req.session.usertype });
-});
-// app.get('/profile', (req, res) => {
-//     res.render("profile", { username: req.session.username, usertype: req.session.usertype });
+// app.get('/afterlogin', (req, res) => {
+//     res.render("afterlogin", { username: req.session.username, usertype: req.session.usertype });
 // });
-
-
+app.get('/profileuser', (req, res) => {
+    res.render("profileuser", { username: req.session.username, usertype: req.session.usertype });
+});
 
 app.post("/signup", async (req, res) => {
         const userData = {
@@ -171,8 +190,10 @@ app.post("/main", async (req, res) => {
 
         const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
         if (isPasswordMatch && check.usertype === req.body.usertype) {
+            req.session.username=check.username;
+            req.session.usertype=req.body.usertype;
             if (check.usertype === 'student') {
-                return res.render("afterlogin");
+                return res.render("profileuser");
             } else if (check.usertype === 'canteen') {
                 return res.render("admin");
             } else {
@@ -186,14 +207,13 @@ app.post("/main", async (req, res) => {
         res.send("An error occurred"); // Send a generic error message
     }
 });
-
 app.post("/checkout", async (req, res) => {
     
     try {
         const { fullName, phoneNumber, cartDetails } = req.body;
 
         // Create a new instance of the OrderHistory model
-        const order = new OrderHistory({ fullName, phoneNumber, cartDetails });
+        const order = new orderHistoriesCollection({ fullName, phoneNumber, cartDetails });
 
         // Save the order to the database
         const savedOrder=await order.save();
@@ -206,38 +226,30 @@ app.post("/checkout", async (req, res) => {
     }
 });
 
-// app.get('/admin', async (req, res) => {
-//     try {
-//         const userslist = await collection.find();
-//         res.render('admin', { userslist: userslist });
-//         //console.log(userslist);
 
-//     } catch (err) {
-//         console.error(err);
-//         res.status(500).json({ error: 'Server Error' });
-//     }
-// });
+
 app.get('/admin', async (req, res) => {
     try {
-        const userslist = await collection.find(); // Assuming collection.find() returns a cursor
-        res.json(userslist);
-        //console.log(userslist);
+        const userslist = await collection.find();  
+        const orderHistoriesList= await orderHistoriesCollection.find({});
+        //console.log(orderHistoriesList);
+        res.json({userslist,orderHistoriesList});
     } catch (err) {
         console.error(err);
         res.status(500).json({ error: 'Server Error' });
     }
 });
-// app.get('/profile', async (req, res) => {
-//     try {
-//     const profilelist = await OrderHistory.find();
-//     console.log(profilelist);
-//     //res.set('Content-Type', 'application/json');
-//     res.json(profilelist);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).json({ error: 'Server Error' });
-//   }
-// });
+app.get('/profileuser', async (req, res) => {
+    try {
+        const orderHistoriesList= await orderHistoriesCollection.find({});
+        console.log(orderHistoriesList);
+        res.json({orderHistoriesList});
+    
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Server Error' });
+    }
+});
 
 const port=5000;
 app.listen(port,() => {

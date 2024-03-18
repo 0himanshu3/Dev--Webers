@@ -1,0 +1,23 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #f2f2f2;
+}
+
+#orderList{
+    position: relative;
+    top: 500px;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    color: #93278a;
+}

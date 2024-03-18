@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="profilestyle.css">
+    <title>Profile</title>
+</head>
+<body>
+    
+    <a href="/afterlogin">Go to Main Page For shopping</a>
+    <input type="text" id="loggedInUsername" placeholder="Enter your username">
+    <button onclick="fetchOrderHistory()">Search</button>
+    <h1>Order History</h1> 
+    <table id="header-tab">
+        <thead>
+            <tr>
+                <th>Full Name</th>
+                <th>User Phone Number</th>
+                <th>Product Name</th>
+                <!-- <th>Product ID</th> -->
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+    </table>
+    <h2>
+        <div class="table-cart">
+        <table id="orderHistoriesList">
+            <tbody id="orderList">
+
+            </tbody>
+        </table>
+        </div>
+    </h2>
+</body>
+<script src="userdata.js"></script>
+</html>

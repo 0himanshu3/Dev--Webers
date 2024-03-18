@@ -285,7 +285,8 @@ footer .end span{
     
         text-align: center;
         padding-bottom: 20px;
-        margin-top: 100px;
+        margin-top: -40px;
+
         
         font-family:Arial, Helvetica, sans-serif;
         font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
@@ -304,6 +305,7 @@ form {
     border-width: 2px;
     padding-bottom: 50px;
     margin-bottom: 70px;
+    margin-left: 550px;
 }
 
 form h2 {
@@ -608,7 +610,7 @@ form input[type="submit"] {
 
 .review h1 span{
     margin-left: 15px;
-    color: #fac031;
+    color: #93278a;
     font-family: mv boli;
 }
 
@@ -616,7 +618,7 @@ form input[type="submit"] {
     content: '';
     width: 100%;
     height: 2px;
-    background: #fac031;
+    background: #93278a;
     position: relative;
     bottom: 15px;
     display: block;
@@ -702,3 +704,164 @@ form input[type="submit"] {
 .review .review_box .review_card:hover .review_text p{
     margin-top: 5px;
 }
+
+
+
+
+
+/* order */
+
+
+/* header {
+    background-color: #93278a;
+    color: white;
+    text-align: center;
+    padding: 10px;
+} */
+
+/* .Order h1{
+    width: 100%;
+    height: 100vh;
+    padding: 70px 0;
+}
+.Order h1 span{
+    margin-left: 15px;
+    color: #93278a;
+    font-family: mv boli;
+} */
+
+
+.Order{
+    width: 100%;
+    height: 100vh;
+    padding: 70px 0;
+}
+
+.Order h1{
+    font-size: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Order h1 span{
+    margin-left: 15px;
+    color: #93278a;
+    font-family: mv boli;
+}
+
+.Order h1 span::after{
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: #93278a;
+    position: relative;
+    bottom: 15px;
+    display: block;
+}
+
+
+.cart_container{
+    width: 80%;
+    display: flex;
+    margin: 50px auto;
+    justify-content: center;
+    padding: 10px auto;
+    padding-top: 70px;
+}
+.quantity{
+    width: 20px;
+}
+table{
+    width: 90%;
+   
+}
+.cart_img{
+    height: 120px;
+    width: 160px;
+    margin-right: 5%;
+}
+.cart_info{
+    display: flex;
+    color: #000;
+    
+    font-weight: 100;
+    font-style: oblique;
+    font-size: larger;
+}
+th{
+    text-align: center;
+    padding-left:300px ;
+    background-color: #93278a;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+td{
+    padding: 20px 5px;
+    nav-left:inherit;
+
+}
+td input{
+    width: 40px;
+    height: 30px;
+    padding: 5px;
+    border-radius: 7px;
+}
+td a{
+    color:#93278a  ;
+}
+.total_price{
+    display: flex;
+    justify-content: flex-end;
+    height: 70px;
+    padding-bottom: 100px;
+    padding-right: 10%;
+    padding-top: -20px;
+    font-weight: 100;
+
+}
+.total_price td{
+    text-align:left;
+}
+
+div{
+    display: inline-block;
+}
+.total_price table{
+    border-top: 3px solid #93278a;
+    width:340px ;
+    
+}
+.payment{
+    display: flex;
+    justify-content: end;
+    padding-bottom: 200px;
+    padding-right: 10%;
+    margin-top: 80px;
+}
+.payment button{
+    margin: 15px;
+    width: 60px;
+    border-radius: 7px;
+    font-weight: 530;
+    background-color: #93278a;
+    color: azure;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0,0.5);
+}
+.payment select{
+    height: 30px;
+    margin: 15px;
+    border-radius: 7px;
+    font-weight: 530;
+    background-color: #93278a;
+    color: azure;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0,0.7);
+    
+}
+.payment button:hover{
+    background-color:#279330;
+    opacity: 0.5;
+}
+

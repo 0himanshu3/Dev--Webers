@@ -10,10 +10,13 @@
     
 <div class="container">
     <div class="checkoutLayout">
-
-        
+       
         <div class="returnCart">
-            <a href="/afterlogin">keep shopping</a>
+            <div class="logo">
+                <img src="howglogo.png">
+                <a href="/afterlogin">keep shopping</a>
+            </div>
+           
             <h1>List Product in Cart</h1>
             <div class="list">
 
@@ -24,7 +27,7 @@
                         <div class="price">$22</div>
                     </div>
                     <div class="quantity">5</div>
-                    <div class="returnPrice">$0</div>
+                    <div class="returnPrice">&#8377;0</div>
                 </div>
 
             </div>
@@ -36,27 +39,30 @@
 
            
             <div class="return">
-                <div class="row">
-                    <div>Total Quantity</div>
-                    <div class="totalQuantity">0</div>
+                <div class="total">
+                    <div class="row">
+                        <div>Total Quantity :</div>
+                        <div class="totalQuantity">0</div>
+                    </div>
+                    <div class="row">
+                        <div>Total Price :</div>
+                        <div class="totalPrice">$0</div>
+                    </div>
                 </div>
-                <div class="row">
-                    <div>Total Price</div>
-                    <div class="totalPrice">$0</div>
-                </div>
+                
 
             <form class="container" id="checkoutForm" method="post" action="/">
                 <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input class="form-control" type="text" name="name">
+                    <label for="name"> Name :</label>
+                    <input  id="name" class="form-control" type="text" name="name" placeholder="Enter Name ">
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input class="form-control" type="number" name="phone">
+                    <label for="phone">Phone Number :</label>
+                    <input id="phone" class="form-control" type="tel" name="phone" placeholder="Enter Phone Number ">
                 </div>
                 <div class="form-group">
-                    <label for="address">Address</label>
-                    <input class="form-control" type="text" name="address">
+                    <label for="address">Address :</label>
+                    <input id="address" class="form-control" type="text" name="address" placeholder="Enter Address">
                 </div>
                 <div class="form-group">
                     <label for="payment">Payment option:</label>
@@ -65,12 +71,10 @@
                         <option value="UPI">UPI</option>
                     </select>
                 </div>
-                <button type="submit">Pay and Place Order</button>
+                <button id="pay-button" type="submit">Pay and Place Order</button>
             </form>
     </div>
-    <div>
-        <p>Check Profile=> <a href="/profile">Profile</a></p>
-    </div>
+
 </div>
 
 

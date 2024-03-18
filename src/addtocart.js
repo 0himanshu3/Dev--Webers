@@ -1,13 +1,4 @@
-// document.addEventListener('DOMContentLoaded', function() {
-//     // Get the referrer URL
-//     var referrer = document.referrer;
-//     console.log(referrer);
-//     // Check if the referrer URL is the main page
-//     if (referrer.includes('/main')) {
-//         // Clear cart from local storage
-//         localStorage.removeItem('cart');
-//     }
-// });
+
 let listProductHTML = document.querySelector('.listProduct');
 let listCartHTML = document.querySelector('.listCart');
 let iconCart = document.querySelector('.icon-cart');
@@ -25,9 +16,7 @@ closeCart.addEventListener('click', () => {
 });
 
 const addDataToHTML = () => {
-    // remove datas default from HTML
 
-    // add new datas
     if (products.length > 0) // if has data
     {
         products.forEach(product => {

@@ -19,11 +19,41 @@ header{
     align-items: center;
     padding: 20px 0;
 }
+.logo img{
+    width: 100px;
+    cursor: pointer;
+    margin: 7px 0;
+}
 .loggingout {
     color: rgb(255, 153, 0); 
     font-size: 24px; 
 }
-
+.loggingout a{
+    text-decoration: none;
+}
+.loggingout a:hover{
+    color:rgb(53, 53, 225);
+}
+.item img{
+    height:50%;
+}
+.item .addCart:hover{
+      background-color: rgba(255, 0, 0, 0.75);
+      
+}
+.item .addCart:active{
+    background-color: green;
+    color: black;
+    
+}
+.close{
+    font-size: medium;
+    
+}
+.checkOut a p{
+    padding: 20px auto;
+    
+}
 .icon-cart{
     position: relative;
 }
@@ -42,6 +72,10 @@ header{
 }
 .title{
     font-size: xx-large;
+    
+}
+#title{
+    margin-right: 50px;
 }
 .listProduct .item img{
     width: 90%;

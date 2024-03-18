@@ -22,15 +22,14 @@
                 <li><a href="#Menu">Menu</a></li>
                 <li><a href="#Gallary">Gallary</a></li>
                 <li><a href="#Review">Review</a></li>
-                <li><a href="#Order">Order</a></li>
+                <li><a href="#Login">Order</a></li>
                 <li><a href="#Login">Login</a></li>
                 
             </ul>
 
             <div class="icon">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <i class="fa-solid fa-heart"></i>
-                <i class="fa-solid fa-cart-shopping"></i>
+                
+                <a href="#Login"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
 
         </nav>
@@ -52,10 +51,7 @@
             Welcome to the Hogwarts School of Witchcraft and Wizardry's very own food website, where enchanting flavors and magical recipes await our esteemed students. Delight your taste buds with our diverse array of dishes, from hearty meals to delectable desserts, all crafted with a touch of wizardry. Whether you're craving a butterbeer-infused treat or a traditional pumpkin pasty, our recipes are sure to charm your palate. Join us on a culinary journey through the halls of Hogwarts, where every meal is a magical experience!
         </p>
 
-        <div class="main_btn">
-            <a href="#">Order Now</a>
-            <i class="fa-solid fa-angle-right"></i>
-        </div>
+       
 
     </section>
 
@@ -948,13 +944,13 @@
 
 
 
-
-    <h1 class="Login" id="Login">LOGIN</h1>
-    
+    <div class="Login_head">
+       <h1 class="Login" id="Login">LOGIN</h1>
+    </div>
     <div id="background_container">
         <div class="container">
             <div class="form-container">
-                <h2>Login or Sign Up</h2>
+                
                         <form action="/main" method="post">
                             <label for="username">Username:</label>
                             <input type="text" id="username" name="username" placeholder="Enter username/email" required>
@@ -969,8 +965,9 @@
                             </select>
             
                             <button type="submit">Login</button>
+                            <p>Dont have an account?<a href="/signup">Signup</a></p>
                         </form>
-                        <p>Dont have an account?<a href="/signup">Signup</a></p>
+                        
     
             </div>
         </div>

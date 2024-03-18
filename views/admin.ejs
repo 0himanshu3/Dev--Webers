@@ -3,23 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="adminstyle.css">
     <title>User List</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+
 </head>
 <body>
+    <div class="logo">
+        <img src="howglogo.png"> 
+        <h1>Admin Page</h1>
+
+        <p><a href="/main">Logout</a></p>
+
+    </div>
+
     <h1>User List</h1>
     <table id="userTable">
         <thead>
@@ -32,6 +28,27 @@
             <!-- Users will be rendered here -->
         </tbody>
     </table>
+    <h1>Order History</h1>
+    <h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Phone Number</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                </tr>
+            </thead>
+        </table>
+        <table id="orderHistoriesList">
+            
+        <tbody id="orderList">
+
+        </tbody>
+    </table>
+</h2>
 </body>
 <script src="admindata.js"></script>
 </html>

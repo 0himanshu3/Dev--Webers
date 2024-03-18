@@ -1,0 +1,44 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    /* box-shadow: 2px 2px 3px grey; */
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+#orderHistoriesList{
+    box-shadow: 2px 2px 5px grey;
+
+}
+th {
+    background-color: #93278a;
+    box-shadow: 2px 2px 5px grey;
+}
+.logo img{
+    width: 100px;
+    cursor: pointer;
+    margin: 7px 0;
+}
+.logo h1{
+    display: inline-block;
+    position: relative;
+    bottom: 50px;
+    left: 30%;
+}
+.logo{
+    background-color: #93278a;
+    box-shadow: 4px 4px 8px grey;
+    height: 110px;
+}
+#userList{
+    box-shadow: 2px 2px 5px grey;
+}
+.logo p{
+    display: inline-block;
+    font-size:large;
+    position: relative;
+    bottom: 50px;
+    left: 50%;
+}

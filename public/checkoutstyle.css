@@ -8,7 +8,18 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    /* box-shadow: 5px 5px 10px grey; */
 }
+.logo img{
+    width: 50px;
+    cursor: pointer;
+    margin: 7px 0;
+}
+.logo a{
+    position: relative;
+    bottom: 23px;
+}
+
 
 .checkoutLayout {
     display: flex;
@@ -64,6 +75,9 @@ body {
     font-size: 24px;
     font-weight: bold;
 }
+.returnCart a:hover{
+   color: #93278a;
+}
 
 .right {
     flex: 1;
@@ -79,3 +93,73 @@ body {
 .right .form {
     margin-bottom: 20
 }
+.row{
+    display: flex;
+    margin: 20px;
+}
+
+.form-group{
+    margin: 10px;
+    
+}
+.form-group input{
+    border-radius: 5px;
+    border-color: #a69a9ab4;
+    box-shadow: 0 0 10px #a69a9ab4;
+}
+.form-group select{
+    border-radius:5px ;
+}
+#pay-button{
+    margin: 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(111, 90, 90);
+    cursor: pointer;
+    border-color: #a69a9ab4;
+}
+#check-profile{
+    margin: 10px;
+   
+}
+#check-profile a{
+    text-decoration: none;
+}
+#check-profile a:hover{
+    color: #93278a;
+}
+.returnCart a{
+    text-decoration: none;
+}
+#pay-button:hover{
+    background-color: grey;
+    color: black;
+}
+#pay-button:active{
+    background-color: grey;
+}
+.form-group select{
+    background-color: rgb(111, 90, 90);
+    color: white;
+    cursor: pointer;
+}
+.form-group select:hover{
+     background-color: grey;
+     color: black;
+}
+.form-group select:active{
+    background-color: grey;
+}
+#checkoutForm{
+    box-shadow: 5px 5px 10px grey;
+    margin: 0 auto;
+    padding: 20px;
+}
+#checkoutForm:hover{
+    box-shadow: 10px 10px 20px grey;
+}
+.list{
+    box-shadow: 0 0 5px grey ;
+    padding: 10px;
+}
+

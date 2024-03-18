@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { getDatabase } = require('./db');
 
-router.get('/', async (req, res) => {
+// Route for /api/users
+router.get('/users', async (req, res) => {
   try {
     const db = getDatabase();
     const users = await db.collection('users').find({}).toArray();
@@ -12,5 +13,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+
 
 module.exports = router;
