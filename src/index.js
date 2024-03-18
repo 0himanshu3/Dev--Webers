@@ -149,7 +149,7 @@ app.get("/profileuser",(req,res)=>{
 app.get('/profileuser', (req, res) => {
     res.render("profileuser", { username: req.session.username, usertype: req.session.usertype });
 });
-
+//signup
 app.post("/signup", async (req, res) => {
         const userData = {
             username: req.body.username,
@@ -164,6 +164,14 @@ app.post("/signup", async (req, res) => {
                 
                 return res.status(400).send("User already exists. Please choose a different username.");
             }
+            if (!userData.username.includes('@mnnit.ac.in')) {
+                return res.status(400).send("Username or email must contain 'mnnit@ac.in'");
+            }
+            const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#])[0-9a-zA-Z@#]{8,}$/;
+            if (!passwordRegex.test(userData.password)) {
+                return res.status(400).send("Password must contain at least 8 characters, including one uppercase letter, one lowercase letter, one number, and one special character (@ or #)");
+            }
+
     
             // Hash the password before storing it
             // const saltRounds = 10;
@@ -172,7 +180,6 @@ app.post("/signup", async (req, res) => {
     
             // Create a new user with hashed password
             const newUser = await collection.insertMany(userData);
-            
             res.send("User registered successfully!"); // Sending response after successful registration
         } catch (error) {
             console.error("Error registering user:", error);

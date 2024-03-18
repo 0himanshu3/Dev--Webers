@@ -5,6 +5,7 @@ let iconCart = document.querySelector('.icon-cart');
 let iconCartSpan = document.querySelector('.icon-cart span');
 let body = document.querySelector('body');
 let closeCart = document.querySelector('.close');
+document.querySelector('.logout a').addEventListener('click', handleLogout);
 let products = [];
 let cart = [];
 
@@ -141,7 +142,10 @@ const changeQuantityCart = (product_id, type) => {
     addCartToHTML();
     addCartToMemory();
 };
-
+function handleLogout() {
+    localStorage.removeItem('cart');
+    window.location.href = '/login';
+  }
 const initApp = () => {
     // get data product
     fetch('products.json')
@@ -158,4 +162,3 @@ const initApp = () => {
         });
 };
 initApp();
-
