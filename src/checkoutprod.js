@@ -28,10 +28,10 @@ function addCartToHTML() {
                     `<img src="${image}">
                     <div class="info">
                         <div class="name">${item.name}</div>
-                        <div class="price">$${item.price}/1 product</div>
+                        <div class="price">₹${item.price}</div>
                     </div>
-                    <div class="quantity">${item.quantity}</div>
-                    <div class="returnPrice">$${item.price * item.quantity}</div>`;
+                    <div class="returnPrice">₹${item.price * item.quantity}/</div>
+                    <div class="quantity">${item.quantity}</div>`;
                 listCartHTML.appendChild(newCart);
                 totalQuantity += item.quantity;
                 totalPrice += item.price * item.quantity;
@@ -40,7 +40,7 @@ function addCartToHTML() {
         });
     }
     totalQuantityHTML.innerText = totalQuantity;
-    totalPriceHTML.innerText = '$' + totalPrice.toFixed(2); 
+    totalPriceHTML.innerText = '₹' + totalPrice.toFixed(2); 
 }
 document.addEventListener('DOMContentLoaded', function () {
     checkCart();
@@ -52,7 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
         // Retrieve full name and phone number from the form
         const fullName = document.querySelector('input[name="name"]').value;
         const phoneNumber = document.querySelector('input[name="phone"]').value;
-
+        if (!validatePhoneNumber(phoneNumber)) {
+          window.alert("Please enter a valid 10-digit phone number.");
+          return false;
+      }
         // Retrieve cart details from localStorage
         const cartDetails = JSON.parse(localStorage.getItem('cart'));
 
@@ -123,3 +126,8 @@ const generateCartItems = () => {
   })
   .join("");
 };
+function validatePhoneNumber(phoneNumber) {
+  // Regular expression to match 10-digit phone numbers
+  const phoneRegex = /^\d{10}$/;
+  return phoneRegex.test(phoneNumber);
+}

@@ -1,6 +1,9 @@
+// Remove this line since we're not using orderHistoriesList as a global variable anymore
+//let orderHistoriesList = [];
 
 function fetchOrderHistory() {
     const loggedInUsername = document.getElementById('loggedInUsername').value;
+    const passworduser = document.getElementById('passworduser').value;
 
     fetch('/admin')
         .then(response => {
@@ -15,11 +18,16 @@ function fetchOrderHistory() {
             }
         })
         .then(data => {
-            if (!data || !data.hasOwnProperty('orderHistoriesList') || !Array.isArray(data.orderHistoriesList)) {
+            if (!data || !data.hasOwnProperty('userslist') || !Array.isArray(data.userslist) ||
+                !data.hasOwnProperty('orderHistoriesList') || !Array.isArray(data.orderHistoriesList)) {
                 throw new Error('Invalid data received');
             }
-            const filteredOrderHistories = data.orderHistoriesList.filter(orderHistory => orderHistory.fullName === loggedInUsername);
-            // Instead of rendering here, let's return the filtered data
+            const user = data.userslist.find(user => user.username === loggedInUsername && user.password === passworduser);
+            if (!user) {
+                window.alert('wrong Credentials');
+            }
+            const filteredOrderHistories = data.orderHistoriesList.filter(orderHistory => orderHistory.fullName === loggedInUsername );
+            filteredOrderHistories.reverse();
             return filteredOrderHistories;
         })
         .then(renderOrderHistoriesList) // Render the filtered order histories here
@@ -55,10 +63,6 @@ function renderOrderHistoriesList(filteredOrderHistories) {
                 nameCell.textContent = item.name;
                 row.appendChild(nameCell);
 
-                // const productIdCell = document.createElement('td');
-                // productIdCell.textContent = item.product_id;
-                // row.appendChild(productIdCell);
-
                 const quantityCell = document.createElement('td');
                 quantityCell.textContent = item.quantity;
                 row.appendChild(quantityCell);
@@ -67,7 +71,8 @@ function renderOrderHistoriesList(filteredOrderHistories) {
                 priceCell.textContent = item.price;
                 row.appendChild(priceCell);
 
-                const imageCell = document.createElement('td');const image = document.createElement('img');
+                const imageCell = document.createElement('td');
+                const image = document.createElement('img');
                 image.src = item.image;
                 image.style.width = '50px';
                 image.style.height = '50px';
@@ -80,7 +85,6 @@ function renderOrderHistoriesList(filteredOrderHistories) {
             const cartDetailsCell = document.createElement('td');
             cartDetailsCell.appendChild(cartDetailsTable);
             row.appendChild(cartDetailsCell);
-
 
             orderHistoriesListContainer.appendChild(row);
         });

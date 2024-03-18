@@ -1,5 +1,4 @@
 
-
 const products = [
     { id: "aa", name: "Burger", price: 90, img: "burger.jpg" },
     { id: "bb", name: "ButterBeer", price: 150, img: "butterbeer.jpg" },
@@ -144,9 +143,9 @@ app.get('/checkout', (req, res) => {
 app.get("/signup",(req,res)=>{
     res.render("signup");
 })
-// app.get('/afterlogin', (req, res) => {
-//     res.render("afterlogin", { username: req.session.username, usertype: req.session.usertype });
-// });
+app.get("/profileuser",(req,res)=>{
+    res.render("profileuser");
+})
 app.get('/profileuser', (req, res) => {
     res.render("profileuser", { username: req.session.username, usertype: req.session.usertype });
 });
@@ -167,13 +166,13 @@ app.post("/signup", async (req, res) => {
             }
     
             // Hash the password before storing it
-            const saltRounds = 10;
-            const hashedPassword = await bcrypt.hash(userData.password, saltRounds);
-            userData.password = hashedPassword; // Replace plain text password with hashed one
+            // const saltRounds = 10;
+            // const hashedPassword = await bcrypt.hash(userData.password, saltRounds);
+            // userData.password = hashedPassword; // Replace plain text password with hashed one
     
             // Create a new user with hashed password
             const newUser = await collection.insertMany(userData);
-            console.log(newUser);
+            
             res.send("User registered successfully!"); // Sending response after successful registration
         } catch (error) {
             console.error("Error registering user:", error);
@@ -188,12 +187,12 @@ app.post("/main", async (req, res) => {
             return res.send("Username not found");
         }
 
-        const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
-        if (isPasswordMatch && check.usertype === req.body.usertype) {
+        //onst isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
+        if (check.password===req.body.password && check.usertype === req.body.usertype) {
             req.session.username=check.username;
             req.session.usertype=req.body.usertype;
             if (check.usertype === 'student') {
-                return res.render("profileuser");
+                return res.render("afterlogin");
             } else if (check.usertype === 'canteen') {
                 return res.render("admin");
             } else {
@@ -207,6 +206,7 @@ app.post("/main", async (req, res) => {
         res.send("An error occurred"); // Send a generic error message
     }
 });
+
 app.post("/checkout", async (req, res) => {
     
     try {
@@ -241,9 +241,10 @@ app.get('/admin', async (req, res) => {
 });
 app.get('/profileuser', async (req, res) => {
     try {
+        const userslist = await collection.find();  
         const orderHistoriesList= await orderHistoriesCollection.find({});
-        console.log(orderHistoriesList);
-        res.json({orderHistoriesList});
+        //console.log(orderHistoriesList);
+        res.json({userslist,orderHistoriesList});
     
     } catch (err) {
         console.error(err);
