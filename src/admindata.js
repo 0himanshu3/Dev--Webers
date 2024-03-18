@@ -19,13 +19,13 @@ window.onload = function () {
         if (!data || !data.hasOwnProperty('userslist') || !Array.isArray(data.userslist)) {
             throw new Error('Invalid data received');
         }
-        userslist = data.userslist;
+        userslist = data.userslist.reverse();
         renderUsersList();
 
         if (!data || !data.hasOwnProperty('orderHistoriesList') || !Array.isArray(data.orderHistoriesList)) {
             throw new Error('Invalid data received');
         }
-        orderHistoriesList = data.orderHistoriesList;
+        orderHistoriesList = data.orderHistoriesList.reverse();
         renderOrderHistoriesList();
       })
       .catch(error => console.error('Error fetching or processing data:', error));
